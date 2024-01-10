@@ -9,11 +9,6 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route("/")
-def index():
-    return render_template("index.html")
-
-
 def compress_image(image, quality=85):
     img = Image.open(image.stream)
     img_io = io.BytesIO()

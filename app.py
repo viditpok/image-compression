@@ -32,7 +32,6 @@ def compress_image(image, quality=85):
 def index():
     if request.method == "POST":
         files = request.files.getlist("images")
-
         memory_file = io.BytesIO()
         with zipfile.ZipFile(memory_file, "w", zipfile.ZIP_DEFLATED) as zipf:
             for file in files:
@@ -40,7 +39,6 @@ def index():
                 if filename != "":
                     img_io = compress_image(file)
                     zipf.writestr(f"compressed_{filename}", img_io.getvalue())
-
         memory_file.seek(0)
         return send_file(
             memory_file,
@@ -48,7 +46,7 @@ def index():
             as_attachment=True,
             download_name="compressed_images.zip",
         )
-
+    # If it's not a POST request, just render the template
     return render_template("index.html")
 
 

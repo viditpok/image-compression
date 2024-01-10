@@ -4,12 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Compression Tool</title>
-    <!-- Bootstrap CSS -->
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -93,7 +91,7 @@
 
     <div class="container">
       <h2 class="text-center mt-3">Compress Your Images</h2>
-      <p class="text-center">Select multiple images and click compress</p>
+      <p class="text-center">Select multiple images and click compress.</p>
       <form method="post" enctype="multipart/form-data">
         <input
           type="file"
@@ -115,7 +113,6 @@
       </form>
     </div>
 
-    <!-- Optional JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -124,18 +121,17 @@
         const fileList = input.files;
         const fileListContainer = document.getElementById("file-list");
         const imagePreviewContainer = document.getElementById("image-preview");
-        imagePreviewContainer.innerHTML = ""; // Clear existing image previews
+        imagePreviewContainer.innerHTML = "";
 
         if (fileList.length === 0) {
           fileListContainer.innerText = "No files chosen";
         } else {
           fileListContainer.innerText = `${fileList.length} files chosen`;
-          // Show a small preview of the images
           Array.from(fileList).forEach((file) => {
             const img = document.createElement("img");
             img.src = URL.createObjectURL(file);
-            img.onload = () => URL.revokeObjectURL(img.src); // Free memory after image blob not needed
-            imagePreviewContainer.appendChild(img); // Append each small preview image to the container
+            img.onload = () => URL.revokeObjectURL(img.src);
+            imagePreviewContainer.appendChild(img);
           });
         }
       }

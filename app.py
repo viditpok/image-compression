@@ -1,10 +1,18 @@
 from flask import Flask, request, render_template, send_file
+from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from PIL import Image
 import io
 import zipfile
 
 app = Flask(__name__)
+CORS(app)
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
 
 def compress_image(image, quality=85):
     img = Image.open(image.stream)
@@ -18,6 +26,7 @@ def compress_image(image, quality=85):
 
     img_io.seek(0)
     return img_io
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -41,6 +50,7 @@ def index():
         )
 
     return render_template("index.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

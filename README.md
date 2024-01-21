@@ -16,6 +16,6 @@ git clone https://github.com/viditpok/image-compression.git
 ## Usage
 To use the tool, follow these steps:
 
-- Open the tool in your browser.
-- Upload the image you want to compress.
-- Access the downloaded image in your downloads folder.
+- Open the tool
+- Upload the image you want to compress
+- Access the downloaded image in your downloads folder
